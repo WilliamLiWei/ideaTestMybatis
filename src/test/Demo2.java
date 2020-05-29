@@ -34,17 +34,17 @@ public class Demo2 {
 
         //插入数据
         User user=new User();
-        user.setUserid(3);
-        user.setUsername("王大米更新");
+        user.setUsername("王大米");
         user.setAge(20);
 
         //使用Session插入一条记录
-        //session.insert("model.User.addUser", user);
+        session.insert("model.User.addUser", user);
+        //提交事务
+        session.commit();
 
         //使用Session更新一条记录
         session.update("model.User.updateUser", user);
         System.out.println(user);
-        //提交事务
         session.commit();
 
         //使用Session删除一条记录

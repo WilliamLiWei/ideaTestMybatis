@@ -23,7 +23,7 @@
         <selectKey order="AFTER" keyProperty="userid" resultType="java.lang.Integer">
             select LAST_INSERT_ID()
         </selectKey>
-        insert into UserInfo values (null,#{username},'男',#{age})
+        insert into UserInfo values (null,#{username},'男',#{age},'本科')
     </insert>
 
     <update id="updateUser" parameterType="model.User">
