@@ -26,11 +26,31 @@ public class Demo2 {
         // 3:获取会话对象(相当于jdbc当中的connection)
         SqlSession session = factory.openSession();
 
-        String strName = "丁";
+        String strName = "李";
         List<User> lstUser = session.selectList("model.User.findUserByName",strName);
         for (User user:lstUser) {
             System.out.println(user);
         }
+
+        //插入数据
+        User user=new User();
+        user.setUserid(3);
+        user.setUsername("王大米更新");
+        user.setAge(20);
+
+        //使用Session插入一条记录
+        //session.insert("model.User.addUser", user);
+
+        //使用Session更新一条记录
+        session.update("model.User.updateUser", user);
+        System.out.println(user);
+        //提交事务
+        session.commit();
+
+        //使用Session删除一条记录
+        session.delete("deleteUser",user);
+        session.commit();
+
         session.close();
     }
 }
