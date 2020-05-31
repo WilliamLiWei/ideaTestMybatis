@@ -1,4 +1,4 @@
-package test;
+package curd;
 
 import Dao.UserDao;
 import DaoImpl.UserDaoImpl;
