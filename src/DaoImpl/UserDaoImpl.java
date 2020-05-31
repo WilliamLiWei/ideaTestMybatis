@@ -12,7 +12,7 @@ public class UserDaoImpl implements UserDao {
         //实现通过ID来查询user对象
         SqlSession session = MybatisUtil.getFactory().openSession();
         User user;
-        user = session.selectOne("model.User.findUserById",id);
+        user = session.selectOne("Dao.UserDao.findUserById",id);
         return user;
     }
 
@@ -30,5 +30,10 @@ public class UserDaoImpl implements UserDao {
         SqlSession session = MybatisUtil.getFactory().openSession();
         UserDao ud = session.getMapper(UserDao.class);
         return ud.findUserByName(name);
+    }
+
+    @Override
+    public Boolean addUserByParameters(String username, int age) {
+        return null;
     }
 }

@@ -9,28 +9,35 @@
           关于简单类型(int,String,date。long)可以使用value来代表参数名
 
      -->
-    <select id="findUserById" parameterType="java.lang.Integer" resultType="model.User">
+    <select id="findUserById" parameterType="java.lang.Integer" resultType="User">
    select * from UserInfo where userid=#{id}
   </select>
 
     <!--$ 符号代表字符串的拼接 -->
-    <select id="findUserByName" parameterType="java.lang.String" resultType="model.User">
+    <select id="findUserByName" parameterType="java.lang.String" resultType="User">
         select * from UserInfo where username  like "%${value}%"
     </select>
 
 
-    <insert id="addUser" parameterType="model.User">
+    <insert id="addUser" parameterType="User">
         <selectKey order="AFTER" keyProperty="userid" resultType="java.lang.Integer">
             select LAST_INSERT_ID()
         </selectKey>
         insert into UserInfo values (null,#{username},'男',#{age},'本科')
     </insert>
 
-    <update id="updateUser" parameterType="model.User">
+    <insert id="addUserByParameters">
+        <selectKey order="AFTER" keyProperty="userid" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into UserInfo values (null,#{param1},'男',#{param2},'本科')
+    </insert>
+
+    <update id="updateUser" parameterType="User">
         update UserInfo set username=#{username},age=#{age} where userid=#{userid}
     </update>
 
-    <delete id="deleteUser" parameterType="model.User">
+    <delete id="deleteUser" parameterType="User">
 	delete from UserInfo where userid=#{userid}
 	</delete>
 </mapper>
