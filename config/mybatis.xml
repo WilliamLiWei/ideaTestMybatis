@@ -12,7 +12,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <properties resource="jdbc.properties" />
 
 	<typeAliases>
-		<typeAlias type="model.User" alias="User" />
+		<!-- 单一重命名 -->
+		<!--typeAlias type="model.User" alias="User" /-->
+		<!-- 批量重命名 -->
+		<package name="model"/>
 	</typeAliases>
 <!-- 环境(数据源信息) -->
 <environments default="development">
